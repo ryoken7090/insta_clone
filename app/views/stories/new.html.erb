@@ -1,4 +1,15 @@
-<%= form_with(model: @story) do |form| %>
+<%= form_with(model: @story, local: true) do |form| %>
+<% if @story.errors.any? %>
+  <div class=" error_explanation">
+    <h2><%= @story.errors.count %>件のエラーがあります。</h2>
+    <ul>
+    <% @story.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="story_content">
     <%= form.label :content %>
     <%= form.text_field :content %>

@@ -7,8 +7,13 @@ class StoriesController < ApplicationController
   end
 
   def create
-    Story.create(story_params)
-    redirect_to stories_path
+    # Story.create(story_params)
+    @story = Story.new(story_params)
+    if @story.save
+      redirect_to stories_path
+    else
+      render :new
+    end
   end
 
   def index
