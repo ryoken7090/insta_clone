@@ -1,5 +1,6 @@
 <% @stories.each do |story| %>
 <ul>
   <li>content: <%= story.content %></li>
+  <li><%= link_to '詳細画面', story_path(story.id) %></li>
 </ul>
 <% end %>
