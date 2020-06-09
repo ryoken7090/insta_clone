@@ -1,3 +1,4 @@
 <h3>詳細画面</h3>
 content: <%= @story.content %>
 <%= link_to '編集', edit_story_path(@story.id) %>
+<%= link_to '削除', story_path, method: :delete, data: { confirm: '削除してよろしいですか？'} %>

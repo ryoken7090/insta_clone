@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_action :set_story, only: [:show, :edit, :update]
+  before_action :set_story, only: [:show, :edit, :update, :destroy]
   def index
     @stories = Story.all
   end
@@ -29,6 +29,11 @@ class StoriesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @story.destroy
+    redirect_to stories_path
   end
 
   private
