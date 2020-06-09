@@ -8,12 +8,21 @@ class StoriesController < ApplicationController
     @story = Story.new
   end
 
+  def confirm
+    @story = Story.new(story_params)
+    render :new if @story.invalid?
+  end
+
   def create
     @story = Story.new(story_params)
-    if @story.save
-      redirect_to stories_path
-    else
+    if params[:back]
       render :new
+    else
+      if @story.save
+        redirect_to stories_path
+      else
+        render :new
+      end
     end
   end
 

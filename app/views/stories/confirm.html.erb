@@ -1,0 +1,9 @@
+<h3>以下の内容で送信する</h3>
+<%= form_with(model: @story, local: true) do |form| %>
+
+<%= form.hidden_field :content %>
+
+<p>content: <%= @story.content %></p>
+<%= form.submit "送信"%>
+<%= form.submit "戻る", name: 'back'%>
+<% end %>
