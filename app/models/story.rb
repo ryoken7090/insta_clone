@@ -5,4 +5,5 @@ class Story < ApplicationRecord
     image.presence or content.presence
   end
   mount_uploader :image, ImageUploader
+  belongs_to :user
 end

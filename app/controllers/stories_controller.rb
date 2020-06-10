@@ -10,11 +10,13 @@ class StoriesController < ApplicationController
 
   def confirm
     @story = Story.new(story_params)
+    @story.user_id = current_user.id
     render :new if @story.invalid?
   end
 
   def create
     @story = Story.new(story_params)
+    @story.user_id = current_user.id
     if params[:back]
       render :new
     else
