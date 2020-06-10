@@ -4,6 +4,9 @@
 <%= form.hidden_field :content %>
 
 <p>content: <%= @story.content %></p>
+
+<%= form.hidden_field :image_cache%>
+<%= image_tag(@story.image.url) if @story.image && @story.image.url %>
 <%= form.submit "送信"%>
 <%= form.submit "戻る", name: 'back'%>
 <% end %>
