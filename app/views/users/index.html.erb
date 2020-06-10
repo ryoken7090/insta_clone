@@ -1,0 +1,6 @@
+<% @users.each do |user| %>
+<ul>
+  <li>content: <%= user.name %></li>
+  <li><%= link_to '詳細画面', user_path(user.id) %></li>
+</ul>
+<% end %>
