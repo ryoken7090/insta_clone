@@ -1,5 +1,12 @@
 <% @stories.each do |story| %>
 <ul>
+  <li>
+  <% if story.user.image.present?%>
+    <%= image_tag (story.user.image.url), size: "50x50" %>
+  <% else %>
+    <%= image_tag 'default.jpeg', size: "50x50" %>
+  <% end %>
+  </li>
   <li>user: <%= story.user.name %></li>
   <li>content: <%= story.content %></li>
   <% if story.image.present? %>

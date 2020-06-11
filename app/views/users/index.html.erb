@@ -1,5 +1,12 @@
 <% @users.each do |user| %>
 <ul>
+  <li>
+  <% if user.image.present?%>
+    <%= image_tag (user.image.url), size: "50x50" %>
+  <% else %>
+    <%= image_tag 'default.jpeg', size: "50x50" %>
+  <% end %>
+  </li>
   <li>content: <%= user.name %></li>
   <li><%= link_to '詳細画面', user_path(user.id) %></li>
 </ul>

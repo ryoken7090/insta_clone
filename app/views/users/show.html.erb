@@ -1,3 +1,10 @@
+<% if @user.image.present?%>
+  <%= image_tag (@user.image.url), size: "100x100" %>
+<% else %>
+  <%= image_tag 'default.jpeg', size: "100x100" %>
+<% end %>
+
+
 <%= @user.name %>のページ
 <%= @user.email %>
   <%= link_to 'お気に入り一覧', favorites_index_users_path(id: @user.id) %>
