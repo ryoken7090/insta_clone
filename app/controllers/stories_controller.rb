@@ -32,6 +32,10 @@ class StoriesController < ApplicationController
   end
 
   def edit
+    unless @story.user_id == current_user.id
+      redirect_to stories_path
+      # noticde 別ユーザーの投稿は編集できませんとか
+    end
   end
 
   def update

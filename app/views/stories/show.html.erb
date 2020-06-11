@@ -3,5 +3,7 @@ content: <%= @story.content %>
 <% if @story.image.present? %>
   <%= image_tag(@story.image.url) %>
 <% end %>
-<%= link_to '編集', edit_story_path(@story.id) %>
-<%= link_to '削除', story_path, method: :delete, data: { confirm: '削除してよろしいですか？'} %>
+<% if @story.user_id == current_user.id %>
+  <%= link_to '編集', edit_story_path(@story.id) %>
+  <%= link_to '削除', story_path, method: :delete, data: { confirm: '削除してよろしいですか？'} %>
+<% end %>
