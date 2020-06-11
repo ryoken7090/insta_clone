@@ -20,11 +20,15 @@ class UsersController < ApplicationController
   end
 
   def show
+    @stories = @user.stories.all
   end
 
   def favorites_index
     @favorites = @user.favorites
-    
+    @stories = []
+    @favorites.each do |fav|
+      @stories << fav.story
+    end
   end
 
   def edit

@@ -1,10 +1,1 @@
-<% @stories.each do |story| %>
-<ul>
-  <li>user: <%= story.user.name %></li>
-  <li>content: <%= story.content %></li>
-  <% if story.image.present? %>
-    <li><%= image_tag(story.image.url) %></li>
-  <% end %>
-  <li><%= link_to '詳細画面', story_path(story.id) %></li>
-</ul>
-<% end %>
+<%= render 'shared/index' %>
