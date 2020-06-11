@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
     # notice登録しましたてきな
   end
   def destroy
-    # binding.pry
+
     favorite = current_user.favorites.find_by(id: params[:id])
     story_id = favorite.story.id
     favorite.destroy

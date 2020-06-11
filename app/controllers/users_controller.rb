@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :favorites_index]
   before_action :authenticate_user, only: [:show, :index]
   def new
     @user = User.new
@@ -15,11 +15,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    @users = User.all
+  end
+
   def show
   end
 
-  def index
-    @users = User.all
+  def favorites_index
+    @favorites = @user.favorites
+    
   end
 
   def edit

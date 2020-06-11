@@ -1,6 +1,7 @@
 <%= @user.name %>のページ
 <%= @user.email %>
+  <%= link_to 'お気に入り一覧', favorites_index_users_path(id: @user.id) %>
 <% if @user.id == current_user.id %>
-  <%= link_to '編集', edit_user_path(@user.id) %>
+  <%= link_to '編集', edit_user_path %>
   <%= link_to 'ユーザ削除', user_path, method: :delete, data: { confirm: '削除してよろしいですか？'} %>
 <% end %>
