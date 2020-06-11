@@ -14,6 +14,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session.delete(:user_id)
-    redirect_to sessions_new_path
+    redirect_to new_session_path
   end
 end

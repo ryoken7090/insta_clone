@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user, only: [:show, :index]
   def new
     @user = User.new
@@ -35,6 +35,12 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @user.destroy
+    redirect_to new_user_path
+    # session.delete(:user_id)
   end
 
   private
