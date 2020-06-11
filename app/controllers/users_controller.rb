@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :updat]
+  before_action :set_user, only: [:show, :edit, :update]
+  before_action :authenticate_user, only: [:show, :index]
   def new
     @user = User.new
   end
