@@ -30,6 +30,7 @@ class StoriesController < ApplicationController
   end
 
   def show
+    @favorite = current_user.favorites.find_by(story_id: @story.id)
   end
 
   def edit
