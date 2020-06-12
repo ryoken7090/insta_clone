@@ -15,6 +15,21 @@
   </script>
 
   <body>
+    <div class="container">
+      <header class="header">
+        <!-- <div class="center-block"> -->
+          <%= image_tag 'logo_image.png', class: 'logo_image center-block' %>
+        <!-- </div> -->
+      </header>
+      <header class="header">
+          <%= link_to image_tag('logo_image.png', class: 'logo_image center-block'), stories_path %>
+      </header>
+      <header class="header">
+        <div class="center-block">
+          <%= link_to image_tag('logo_image.png', class: 'logo_image'), stories_path %>
+        </div>
+      </header>
+
     <% flash.each do|key,value| %>
       <%= content_tag(:div, value, class: "alert alert-#{key}") %>
     <% end %>
