@@ -1,12 +1,43 @@
+body{
+  // width: 80%;
+  background-color: yellow;
+}
+.container{
+  background-color: blue;
+}
 .header {
   border-color: gray;
   border: 0.5px solid;
   border-radius: 5px;
+  margin: 0 5px;
+  background-color: white;
+}
+.footer {
+  border-color: gray;
+  border: 0.5px solid;
+  border-radius: 5px;
+  margin: 0 5px;
+  background-color: white;
+  padding: 5px;
+}
+
+.main{
+  // width: 40%;
+  background-color: white;
 }
 .logo_image{
-  height: 75px;
-  // display: block;
+  width: 60%;
 }
-// .block{
-//   display: block;
-// }
+.link_box{
+  width: 40%;
+}
+.glyphicon{
+  font-size: 45px;
+  color: black;
+}
+.flex{
+  padding: 2.5px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  }

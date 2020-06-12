@@ -12,40 +12,76 @@
   $(function(){
     $(".alert").fadeOut(1500);
   });
+  $(function() {
+    let height=$(".header").height();
+    $(".main").css("margin-top", height + 10);
+  });
   </script>
 
   <body>
     <div class="container">
-      <header class="header">
-        <!-- <div class="center-block"> -->
-          <%= image_tag 'logo_image.png', class: 'logo_image center-block' %>
-        <!-- </div> -->
+
+      <nav class="navbar navbar-fixed-top">
+        <header class="header">
+        <%= link_to image_tag('logo_image.png', class: 'logo_image center-block'), stories_path, {class: "link_box center-block"} %>
+
+
+
       </header>
-      <header class="header">
-          <%= link_to image_tag('logo_image.png', class: 'logo_image center-block'), stories_path %>
-      </header>
-      <header class="header">
-        <div class="center-block">
-          <%= link_to image_tag('logo_image.png', class: 'logo_image'), stories_path %>
+      </nav>
+
+      <% flash.each do|key,value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+      <% end %>
+
+
+      <div class="row">
+        <div class="main col-sm-offset-1 col-sm-10">
+          <% if logged_in? %>
+            <%= link_to current_user.name, user_path(current_user.id) %>
+            <%= link_to "投稿一覧",stories_path %>
+            <%= link_to "新規投稿", new_story_path%>
+            <%= link_to "ユーザ一覧", users_path %>
+            <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
+
+          <% else %>
+
+          <%= link_to new_user_path do %>
+            <button type="button" class="btn btn-default">サインアップ</button>
+          <% end %>
+
+
+            <%= link_to "ユーザ登録", new_user_path %>
+            <%= link_to "ログイン", new_session_path %>
+          <% end %>
+          <%= yield %>
         </div>
-      </header>
 
-    <% flash.each do|key,value| %>
-      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-    <% end %>
+      </div>
 
-    <% if logged_in? %>
-      <%= link_to current_user.name, user_path(current_user.id) %>
-      <%= link_to "投稿一覧",stories_path %>
-      <%= link_to "新規投稿", new_story_path%>
-      <%= link_to "ユーザ一覧", users_path %>
-      <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
+      <% if logged_in? %>
+      <nav class="navbar navbar-fixed-bottom">
+        <footer class="footer">
+          <div class="flex">
+            <p>
+              <%= link_to stories_path do %>
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                <% end %>
+              </p>
+              <p>
+                <%= link_to new_story_path do %>
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                <% end %>
+              </p>
+              <p>
+                <%= link_to user_path(current_user.id) do %>
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <% end %>
+              </p>
+            </div>
+        </footer>
+      <% end %>
 
-    <% else %>
-      <%= link_to "ユーザ登録", new_user_path %>
-      <%= link_to "ログイン", new_session_path %>
-    <% end %>
-    <br>
-    <%= yield %>
+    </div>
   </body>
 </html>
