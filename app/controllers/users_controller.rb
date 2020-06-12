@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      flash[:success] = 'ユーザー登録が完了しました'
       redirect_to user_path(@user.id)
     else
       render :new
@@ -27,21 +28,23 @@ class UsersController < ApplicationController
     @favorites = @user.favorites
     @stories = []
     @favorites.each do |fav|
-      @stories << fav.story
+    @stories << fav.story
     end
   end
 
   def edit
     unless @user.id == current_user.id
       redirect_to users_path
-      # noticde 別ユーザーの情報は編集できませんとか
+      flash[:warning] = '他のユーザーは編集できません'
     end
   end
 
   def update
     if @user.update(user_params)
+      flash[:success] = 'ユーザー情報を編集しました'
       redirect_to user_path(@user.id)
     else
+      flash.now[:danger] = 'ユーザー情報を編集できませんでした'
       render :edit
     end
   end

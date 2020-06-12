@@ -22,6 +22,7 @@ class StoriesController < ApplicationController
       render :new
     else
       if @story.save
+        flash[:success] = '投稿できました'
         redirect_to stories_path
       else
         render :new
@@ -35,13 +36,14 @@ class StoriesController < ApplicationController
 
   def edit
     unless @story.user_id == current_user.id
+      flash[:warning] = '他のユーザーは編集できません'
       redirect_to stories_path
-      # noticde 別ユーザーの投稿は編集できませんとか
     end
   end
 
   def update
     if @story.update(story_params)
+      flash[:success] = '編集できました'
       redirect_to stories_path
     else
       render :edit
