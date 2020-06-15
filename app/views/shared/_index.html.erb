@@ -12,16 +12,20 @@
         user: <%= story.user.name %>
     </div>
   </div>
-  <div class="topic_main">
-    <div class="content">
-      <%= story.content %>
-    </div>
-    <div class="image">
-      <%= image_tag(story.image.url) %>
+  <div class="row">
+    <div class="topic_main col-sm-offset-1 col-sm-10">
+      <div class="content">
+        <%= story.content %>
+      </div>
+      <div class="image">
+        <%= image_tag story.image.url, class: "resizeimage center-block" %>
+      </div>
+      <div class="link pull-right">
+        <%= link_to '詳細', story_path(story.id) %>
+      </div>
     </div>
   </div>
-  <div class="link">
-    <%= link_to '詳細画面', story_path(story.id) %>
-  </div>
+
+
 </div>
 <% end %>

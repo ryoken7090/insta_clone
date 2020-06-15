@@ -1,14 +1,45 @@
-<h3>詳細画面</h3>
-content: <%= @story.content %>
-<% if @story.image.present? %>
-  <%= image_tag(@story.image.url) %>
-<% end %>
-<% if @story.user_id == current_user.id %>
-  <%= link_to '編集', edit_story_path(@story.id) %>
-  <%= link_to '削除', story_path, method: :delete, data: { confirm: '削除してよろしいですか？'} %>
-<% end %>
-<% if @favorite.present? %>
-  <%= link_to 'お気に入りを解除', favorite_path(id: @favorite.id), method: :delete %>
-<% else %>
-  <%= link_to 'お気に入りに登録', favorites_path(story_id: @story.id), method: :post %>
-<% end %>
+<div class="topic">
+  <div class="user clearfix">
+    <div class="user_left">
+      <% if @story.user.image.present?%>
+        <%= image_tag (@story.user.image.url), size: "50x50" %>
+      <% else %>
+        <%= image_tag 'default.png', size: "50x50" %>
+      <% end %>
+    </div>
+    <div class="user_right">
+        user: <%= @story.user.name %>
+    </div>
+    <div class="row">
+      <div class="topic_main col-sm-offset-1 col-sm-10">
+        <div class="image">
+          <%= image_tag @story.image.url, class: "resizeimage center-block" %>
+        </div>
+        <% if @story.content.present? %>
+          <div class="content">
+            <%= @story.content %>
+          </div>
+        <% end %>
+        <div>
+          <div class="pull-right">
+            <% if @favorite.present? %>
+              <%= link_to(favorite_path(id: @favorite.id), method: :delete) do %>
+                <span class="glyphicon glyphicon-star favorite_icon" aria-hidden="true"></span>
+              <% end %>
+            <% else %>
+              <%= link_to(favorites_path(story_id: @story.id), method: :post) do %>
+                <span class="glyphicon glyphicon-star-empty favorite_icon" aria-hidden="true"></span>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <div>
+            <% if @story.user_id == current_user.id %>
+              <%= link_to '編集', edit_story_path(@story.id) %>
+              <%= link_to '削除', story_path, method: :delete, data: { confirm: '削除してよろしいですか？'} %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
