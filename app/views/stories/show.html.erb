@@ -8,7 +8,10 @@
       <% end %>
     </div>
     <div class="user_right">
-        user: <%= @story.user.name %>
+      <%= link_to(user_path(@story.user.id)) do %>
+        <h4><%= @story.user.name %></h4>
+      <% end %>
+        投稿時間: <%= @story.created_at.strftime("%Y年%m月%d日 %H:%M") %>
     </div>
     <div class="row">
       <div class="topic_main col-sm-offset-1 col-sm-10">
@@ -24,11 +27,11 @@
           <div class="pull-right clearfix">
             <% if @favorite.present? %>
               <%= link_to(favorite_path(id: @favorite.id), method: :delete) do %>
-                <span class="glyphicon glyphicon-star favorite_icon" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-star favorite_icon" aria-hidden="true"></span>お気に入りを解除
               <% end %>
             <% else %>
               <%= link_to(favorites_path(story_id: @story.id), method: :post) do %>
-                <span class="glyphicon glyphicon-star-empty favorite_icon" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-star-empty favorite_icon" aria-hidden="true"></span>お気に入りに追加
               <% end %>
             <% end %>
           </div>

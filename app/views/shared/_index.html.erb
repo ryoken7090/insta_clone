@@ -2,16 +2,19 @@
 <div class="topic">
   <div class="user clearfix">
     <div class="user_left">
-      <% if story.user.image.present?%>
-        <%= image_tag (story.user.image.url), size: "50x50" %>
-      <% else %>
-        <%= image_tag 'default.png', size: "50x50" %>
+      <%= link_to(user_path(story.user.id)) do %>
+        <% if story.user.image.present?%>
+          <%= image_tag (story.user.image.url), size: "50x50" %>
+        <% else %>
+          <%= image_tag 'default.png', size: "50x50" %>
+        <% end %>
       <% end %>
     </div>
     <div class="user_right">
-        投稿者: <%= story.user.name %> <br>
+      <%= link_to(user_path(story.user.id)) do %>
+        <h4><%= story.user.name %></h4>
+      <% end %>
         投稿時間: <%= story.created_at.strftime("%Y年%m月%d日 %H:%M") %>
-
     </div>
   </div>
   <div class="row">
