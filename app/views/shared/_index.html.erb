@@ -9,7 +9,9 @@
       <% end %>
     </div>
     <div class="user_right">
-        user: <%= story.user.name %>
+        投稿者: <%= story.user.name %> <br>
+        投稿時間: <%= story.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+
     </div>
   </div>
   <div class="row">
