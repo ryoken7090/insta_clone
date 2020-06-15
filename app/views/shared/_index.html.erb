@@ -1,17 +1,27 @@
 <% @stories.each do |story| %>
-<ul>
-  <li>
-  <% if story.user.image.present?%>
-    <%= image_tag (story.user.image.url), size: "50x50" %>
-  <% else %>
-    <%= image_tag 'default.jpeg', size: "50x50" %>
-  <% end %>
-  </li>
-  <li>user: <%= story.user.name %></li>
-  <li>content: <%= story.content %></li>
-  <% if story.image.present? %>
-    <li><%= image_tag(story.image.url) %></li>
-  <% end %>
-  <li><%= link_to '詳細画面', story_path(story.id) %></li>
-</ul>
+<div class="topic">
+  <div class="user clearfix">
+    <div class="user_left">
+      <% if story.user.image.present?%>
+        <%= image_tag (story.user.image.url), size: "50x50" %>
+      <% else %>
+        <%= image_tag 'default.png', size: "50x50" %>
+      <% end %>
+    </div>
+    <div class="user_right">
+        user: <%= story.user.name %>
+    </div>
+  </div>
+  <div class="topic_main">
+    <div class="content">
+      <%= story.content %>
+    </div>
+    <div class="image">
+      <%= image_tag(story.image.url) %>
+    </div>
+  </div>
+  <div class="link">
+    <%= link_to '詳細画面', story_path(story.id) %>
+  </div>
+</div>
 <% end %>

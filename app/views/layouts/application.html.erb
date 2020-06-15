@@ -24,9 +24,6 @@
       <nav class="navbar navbar-fixed-top">
         <header class="header">
         <%= link_to image_tag('logo_image.png', class: 'logo_image center-block'), stories_path, {class: "link_box center-block"} %>
-
-
-
       </header>
       </nav>
 
@@ -54,6 +51,8 @@
             <%= link_to "ユーザ登録", new_user_path %>
             <%= link_to "ログイン", new_session_path %>
           <% end %>
+          <br>
+          
           <%= yield %>
         </div>
 
