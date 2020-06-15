@@ -1,2 +1,39 @@
-<h1>favorites_indexページ！</h1>
+<% if @user.id == current_user.id %>
+  <ul class="go_out">
+    <li><%= link_to 'ユーザ削除', user_path(id: @user.id), method: :delete, data: { confirm: '削除してよろしいですか？'} %></li>
+    <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+  </ul>
+<% end %>
+
+<div class="user_top clearfix">
+  <div class="user_left">
+    <% if @user.image.present?%>
+      <%= image_tag (@user.image.url), size: "100x100" %>
+    <% else %>
+      <%= image_tag 'default.png', size: "100x100" %>
+    <% end %>
+  </div>
+  <div class="user_left">
+    <ul>
+      <li class="user_name">
+        <h2><%= @user.name %>のページ</h2>
+      </li>
+      <% if @user.id == current_user.id %>
+        <li class="user_email">
+          <%= @user.email %>
+        </li>
+      <% end %>
+    </ul>
+    <ul class="clearfix">
+      <% if @user.id == current_user.id %>
+        <li class="user_menu">
+          <%= link_to 'ユーザー編集', edit_user_path(id: @user.id) %>
+        </li>
+      <% end %>
+      <li class="user_menu">
+        <%= link_to '投稿一覧', user_path(@user.id) %>
+      </li>
+    </ul>
+  </div>
+</div>
 <%= render 'shared/index' %>
