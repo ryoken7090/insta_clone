@@ -22,6 +22,7 @@ class StoriesController < ApplicationController
       render :new
     else
       if @story.save
+        NoticeMailer.notice_mail(@story).deliver
         flash[:success] = '投稿できました'
         redirect_to stories_path
       else
