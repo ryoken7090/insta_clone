@@ -1,11 +1,6 @@
-
 ul {
   list-style: none;
 }
-
-
-
-
 .header {
   border-color: gray;
   border: 0.5px solid;
@@ -13,7 +8,6 @@ ul {
   margin: 0 5px;
   background-color: white;
 }
-
 .footer {
   border-color: gray;
   border: 0.5px solid;
@@ -22,10 +16,8 @@ ul {
   background-color: white;
   padding: 5px;
 }
-
 .main{
   margin-bottom: 80px;
-
 }
 .logo_image{
   width: 60%;
@@ -42,4 +34,4 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  }
+}

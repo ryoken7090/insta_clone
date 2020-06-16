@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :favorites_index]
   before_action :authenticate_user, only: [:show, :index]
+
   def new
     @user = User.new
   end
@@ -52,7 +53,6 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to new_user_path
-    # session.delete(:user_id)
   end
 
   private
@@ -63,4 +63,5 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+  
 end

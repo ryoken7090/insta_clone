@@ -4,39 +4,34 @@
     <title>InstaClone</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
   <script>
-  $(function(){
+    $(function(){
       $(".alert").fadeOut(1500);
     });
-  $(function() {
-    var height=$(".header").height();
-    $(".main").css("margin-top", height+10);
-  });
+    $(function() {
+      var height=$(".header").height();
+      $(".main").css("margin-top", height+10);
+    });
   </script>
-
   <body>
-
     <div class="container">
       <nav class="navbar navbar-fixed-top">
         <header class="header">
-        <%= link_to image_tag('logo_image.png', class: 'logo_image center-block'), stories_path, {class: "link_box center-block"} %>
-      </header>
+          <%= link_to image_tag('logo_image.png', class: 'logo_image center-block'), stories_path, {class: "link_box center-block"} %>
+        </header>
       </nav>
-
       <div class="row">
         <div class="main col-sm-offset-1 col-sm-10">
           <% flash.each do|key, value| %>
             <%= content_tag(:div, value, class: "alert alert-#{key}") %>
           <% end %>
-          <%= yield %>
+        <%= yield %>
         </div>
       </div>
-
       <% if logged_in? %>
       <nav class="navbar navbar-fixed-bottom">
         <footer class="footer">
@@ -44,22 +39,21 @@
             <p>
               <%= link_to stories_path do %>
                 <i class="fas fa-home footer_icon"></i>
+              <% end %>
+            </p>
+            <p>
+              <%= link_to new_story_path do %>
+                <i class="far fa-plus-square footer_icon"></i>
                 <% end %>
-              </p>
-              <p>
-                <%= link_to new_story_path do %>
-                  <i class="far fa-plus-square footer_icon"></i>
-                <% end %>
-              </p>
-              <p>
-                <%= link_to user_path(current_user.id) do %>
+            </p>
+            <p>
+              <%= link_to user_path(current_user.id) do %>
                 <i class="fas fa-user footer_icon"></i>
-                <% end %>
-              </p>
-            </div>
+              <% end %>
+            </p>
+          </div>
         </footer>
       <% end %>
-
     </div>
   </body>
 </html>

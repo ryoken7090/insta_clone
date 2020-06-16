@@ -4,7 +4,6 @@
     <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
   </ul>
 <% end %>
-
 <div class="user_top clearfix">
   <div class="user_left">
     <% if @user.image.present?%>

@@ -1,36 +1,34 @@
 <% @stories.each do |story| %>
-<div class="topic">
-  <div class="user clearfix">
-    <div class="user_left">
-      <%= link_to(user_path(story.user.id)) do %>
-        <% if story.user.image.present?%>
-          <%= image_tag (story.user.image.url), size: "50x50" %>
-        <% else %>
-          <%= image_tag 'default.png', size: "50x50" %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="user_right">
-      <%= link_to(user_path(story.user.id)) do %>
-        <h4><%= story.user.name %></h4>
-      <% end %>
-        投稿時間: <%= story.created_at.strftime("%Y年%m月%d日 %H:%M") %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="topic_main col-sm-offset-1 col-sm-10">
-      <div class="image">
-        <%= image_tag story.image.url, class: "resizeimage center-block" %>
+  <div class="topic">
+    <div class="user clearfix">
+      <div class="user_left">
+        <%= link_to(user_path(story.user.id)) do %>
+          <% if story.user.image.present?%>
+            <%= image_tag (story.user.image.url), size: "50x50" %>
+            <% else %>
+            <%= image_tag 'default.png', size: "50x50" %>
+            <% end %>
+            <% end %>
+          </div>
+          <div class="user_right">
+            <%= link_to(user_path(story.user.id)) do %>
+            <h4><%= story.user.name %></h4>
+            <% end %>
+            投稿時間: <%= story.created_at.strftime("%Y年%m月%d日 %H:%M") %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="topic_main col-sm-offset-1 col-sm-10">
+            <div class="image">
+              <%= image_tag story.image.url, class: "resizeimage center-block" %>
+            </div>
+            <div class="content">
+              <%= story.content %>
+            </div>
+            <div class="link pull-right">
+              <%= link_to '詳細', story_path(story.id) %>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="content">
-        <%= story.content %>
-      </div>
-      <div class="link pull-right">
-        <%= link_to '詳細', story_path(story.id) %>
-      </div>
-    </div>
-  </div>
-
-
-</div>
 <% end %>

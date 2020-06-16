@@ -1,34 +1,33 @@
 <h3>以下の内容で送信する</h3>
 <%= form_with(model: @story, local: true) do |form| %>
-
-<%= form.hidden_field :image_cache%>
-<%= form.hidden_field :content %>
-<div class="topic">
-<div class="user_left">
-  <% if @story.user.image.present?%>
-    <%= image_tag (@story.user.image.url), size: "50x50" %>
-  <% else %>
-    <%= image_tag 'default.png', size: "50x50" %>
-  <% end %>
-</div>
-<div class="user_right">
-  <h4><%= @story.user.name %></h4>
-</div>
-<div class="row">
-  <div class="topic_main col-sm-offset-1 col-sm-10">
-    <div class="image">
-      <% if @story.image && @story.image.url %>
-        <%= image_tag @story.image.url, class: "resizeimage center-block" %>
+  <%= form.hidden_field :image_cache%>
+  <%= form.hidden_field :content %>
+  <div class="topic">
+    <div class="user_left">
+      <% if @story.user.image.present?%>
+        <%= image_tag (@story.user.image.url), size: "50x50" %>
+      <% else %>
+        <%= image_tag 'default.png', size: "50x50" %>
       <% end %>
     </div>
-    <% if @story.content.present? %>
-      <div class="content">
-        <%= @story.content %>
+    <div class="user_right">
+      <h4><%= @story.user.name %></h4>
+    </div>
+    <div class="row">
+      <div class="topic_main col-sm-offset-1 col-sm-10">
+        <div class="image">
+          <% if @story.image && @story.image.url %>
+            <%= image_tag @story.image.url, class: "resizeimage center-block" %>
+          <% end %>
+        </div>
+        <% if @story.content.present? %>
+          <div class="content">
+            <%= @story.content %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
-</div>
-<%= form.submit "送信"%>
-<%= form.submit "戻る", name: 'back'%>
+  <%= form.submit "送信"%>
+  <%= form.submit "戻る", name: 'back'%>
 <% end %>
