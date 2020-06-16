@@ -10,12 +10,11 @@
   </head>
   <script>
   $(function(){
-    $(".alert").fadeOut(1500);
-  });
+      $(".alert").fadeOut(1500);
+    });
   $(function() {
-    // debugger;
     var height=$(".header").height();
-    $(".main").css("margin-top", height);
+    $(".main").css("margin-top", height+10);
   });
   </script>
 
@@ -28,12 +27,11 @@
       </header>
       </nav>
 
-      <% flash.each do|key,value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-      <% end %>
-
       <div class="row">
         <div class="main col-sm-offset-1 col-sm-10">
+          <% flash.each do|key, value| %>
+            <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+          <% end %>
           <%= yield %>
         </div>
       </div>
