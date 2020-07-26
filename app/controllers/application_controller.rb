@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def match_user
+    unless @user == current_user.id
+      
+    end
+  end
+
 end
